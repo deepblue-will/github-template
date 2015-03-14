@@ -1,0 +1,60 @@
+body {
+  color: #333;
+  font-size: 14px;
+}
+
+.menu {
+  width: 450px;
+}
+.menu--item td {
+  padding: 6px 6px 9px;
+  border-bottom: 1px dashed #bbb;
+}
+.menu--item:first-child td {
+  padding-top: 0;
+}
+.menu--item:last-child td {
+  padding-bottom: 0;
+  border-bottom: 0
+}
+.menu--tags {
+  width: 130px;
+}
+.menu--tagSelect {
+  background-color: #fff;
+  width: 130px;
+  height: 30px;
+}
+.menu--link {
+  width: 110px;
+}
+.menu--btn {
+  position: relative;
+  display: inline-block;
+  padding: 7px 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid #5ca941;
+  border-radius: 3px;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+  background-color: #60b044;
+  background-image: linear-gradient(#8add6d, #60b044);
+  background-repeat: repeat-x;
+}
+.menu--btn:hover {
+  background-color: #569e3d;
+  background-image: linear-gradient(#79d858, #569e3d);
+  background-repeat: repeat-x;
+  border-color: #4a993e;
+}
+.menu--btn:active {
+  background-color: #569e3d;
+  background-image: none;
+  border-color: #418737;
+}
+.menu--item-template {
+  display: none;
+}

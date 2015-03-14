@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+
+  "name": "GitHub template",
+  "description": "create GitHub issue with your template",
+  "version": "1.0",
+
+  "options_page": "html/option_page.html",
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_title": "create issue",
+    "default_popup": "html/popup.html"
+  },
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  
+  "author": "deepblue-will",
+  "icons": { 
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png" 
+  }
+}
