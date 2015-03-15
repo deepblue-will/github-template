@@ -1,32 +1,33 @@
 body {
   color: #333;
   font-size: 14px;
+  margin: 0;
 }
 
 .menu {
   width: 450px;
+  border-collapse: collapse;
 }
 .menu--item td {
   padding: 6px 6px 9px;
   border-bottom: 1px dashed #bbb;
 }
-.menu--item:first-child td {
-  padding-top: 0;
-}
 .menu--item:last-child td {
-  padding-bottom: 0;
   border-bottom: 0
 }
-.menu--tags {
+.menu--item:nth-child(odd) td {
+  background: #f6f6f6;
+}
+.menu--labels {
   width: 130px;
 }
-.menu--tagSelect {
+.menu--labelSelect {
   background-color: #fff;
   width: 130px;
   height: 30px;
 }
 .menu--link {
-  width: 110px;
+  width: 95px;
 }
 .menu--btn {
   position: relative;

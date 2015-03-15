@@ -1,0 +1,36 @@
+textarea {
+  outline: none;
+  border: 1px solid #9e9e9e;
+  height: auto;
+  transition: .3s;
+  font-size: 1rem;
+  resize: vertical;
+}
+textarea:focus {
+  border-color: #26a69a;
+}
+
+.template {
+  display: none;
+}
+table .btn, 
+table .btn-flat {
+  margin-bottom: 0;
+}
+
+.settings .settings-kv tr {
+  border-bottom: 0;
+}
+.th-delete {
+  width: 37px;
+}
+.td-icon {
+  width: 37px;
+}
+.th-templateSelect {
+  min-width: 180px;
+}
+.btn-flat.btn-icon {
+  padding-left: 12px;
+  padding-right: 12px;
+}
