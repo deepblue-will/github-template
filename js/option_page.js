@@ -4,7 +4,7 @@ $(function(){
     if(Object.keys(storageData).length > 0){
       data = storageData;
     }
-    
+    console.log(data);
     load(data["github-issue-template"]);
   });
 
@@ -29,15 +29,41 @@ $(function(){
   
   
   $(".btn-save").click(function() {
-    var data = {};
-    chrome.storage.sync.set(data, function(){
+    var data = {general : [], templates: {}};
+    
+    $(".settings-genaral").find("> tbody > tr").not(".template").each(function() {
+      var generalData = {};
+      generalData["repo"] = $(this).find(".settings--repo").val();
+      generalData["dispName"] = $(this).find(".settings--dispName").val();
+      
+      var templates = {};
+      $(this).find(".settings-kv").find("tr").not(".template").each(function() {
+        templates[$(this).find(".settings--label").val()] = $(this).find(".settings--templateSelect").val();
+      });
+      generalData["templates"] = templates;
+      data.general.push(generalData);
+    });
+    
+    var templateData = {};
+    $(".settings-templates").find("tr").not(".template").each(function() {
+      templateData[$(this).find(".settings--templateName").val()] = $(this).find(".settings--template").val();
+    });
+    
+    data["templates"] = templateData;
+    chrome.storage.sync.set({"github-issue-template": data}, function(){
       toast("Saved.", 2000);
     });
   });
   
   $(".btn-reset").click(function() {
     chrome.storage.sync.clear(function(){
-      load(DEFAULT_VALUE);
+      $(".settings-genaral").find("> tbody > tr").not(".template").each(function() {
+        $(this).remove();
+      });
+      $(".settings-templates").find("> tbody > tr").not(".template").each(function() {
+        $(this).remove();
+      });
+      load(DEFAULT_VALUE["github-issue-template"]);
       toast("Reset", 2000);
     });
   });
@@ -45,23 +71,31 @@ $(function(){
   function load(data) {
     $tableGeneral = $(".settings-genaral");
     updateTemplateSelect($tableGeneral.find(".template").find(".settings--templateSelect"), Object.keys(data.templates));
+ 
     data.general.forEach(function (g) {
       addTr($tableGeneral, function($template) {
         $template.find(".settings--repo").val(g.repo);
         $template.find(".settings--dispName").val(g.dispName);
         var $tableKv = $template.find(".settings-kv");
-        var templateKeys = Object.keys(data.templates);
+        var templateKeys = Object.keys(g.templates);
         if(templateKeys.length > 0) {
           templateKeys.forEach(function(k, i) {
             var applyLabelTemplate = function ($template) {
               $template.find(".settings--label").val(k);
-              $template.find(".settings--templateSelect").val(data.templates[k]);
+              $template.find(".settings--templateSelect").val(g.templates[k]);
             };
             i === 0 ? addTr($tableKv, applyLabelTemplate) : addTrWithRemoveBtn($tableKv, ".btn-addInTr", applyLabelTemplate);
           });
         } else {
           addTr($tableKv);
         }
+      });
+    });
+    
+    Object.keys(data.templates).forEach(function(k) {
+      addTr($(".settings-templates"), function($template) {
+        $template.find(".settings--templateName").val(k);
+        $template.find(".settings--template").val(data.templates[k]);
       });
     });
   }

@@ -11,8 +11,8 @@ const DEFAULT_VALUE = {
       }
     ],
     templates: {
-      feature: "## 概要¥n¥n ## 期待する動作¥n¥n## 関連するissue¥n¥n",
-      bug: "## 概要¥n¥n ## 再現手順¥n¥n## ログ¥n¥n## 修正方法¥n¥n## 関連するissue¥n¥n"
+      feature: "sample",
+      bug: "sample2"
     }
   }
 }
