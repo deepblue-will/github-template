@@ -4,7 +4,6 @@ $(function(){
     if(Object.keys(storageData).length > 0){
       data = storageData;
     }
-    console.log(data);
     load(data["github-issue-template"]);
   });
 
@@ -27,6 +26,17 @@ $(function(){
     $tr.remove();
   });
   
+  
+  $(document).on("blur", ".settings--templateName", function() {
+    var templateNames = [];
+    $("tr:not([class=template]) .settings--templateName").each(function() {
+      templateNames.push($(this).val());
+    });
+    
+    $(".settings--templateSelect").each(function() {
+      updateTemplateSelect($(this), templateNames);
+    });
+  });
   
   $(".btn-save").click(function() {
     var data = {general : [], templates: {}};
@@ -101,6 +111,10 @@ $(function(){
   }
   
   function updateTemplateSelect($select, templateKeys) {
+    var val = $select.val();
+    $select.find("option:not(:first-child)").each(function(){
+      $(this).remove();
+    });
     templateKeys.forEach(function(k) {
       var $option = $select.find("option:first-child").clone();
       $option.val(k);
@@ -108,6 +122,7 @@ $(function(){
       $option.attr("disabled", false);
       $select.append($option);
     });
+    $select.val(val);
   }
   
   function addTr($table, callback) {
