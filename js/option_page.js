@@ -23,19 +23,20 @@ $(function(){
   // remove line
   $(document).on("click", ".btn-remove", function() {
     var $tr = $(this).parent().parent();
+    var $tbody = $tr.parent();
     $tr.remove();
+    if($tr.find(".settings--templateName")[0]) {
+      updateTemplateSelectAll();
+    }
+    $trs = $tbody.find("tr").not(".template");
+    if($trs.length === 1) {
+      $trs.find(".btn-remove").remove();
+    }
   });
   
   
   $(document).on("blur", ".settings--templateName", function() {
-    var templateNames = [];
-    $("tr:not([class=template]) .settings--templateName").each(function() {
-      templateNames.push($(this).val());
-    });
-    
-    $(".settings--templateSelect").each(function() {
-      updateTemplateSelect($(this), templateNames);
-    });
+    updateTemplateSelectAll();
   });
   
   $(".btn-save").click(function() {
@@ -125,8 +126,22 @@ $(function(){
     $select.val(val);
   }
   
+  function updateTemplateSelectAll() {
+    var templateNames = [];
+    $("tr:not([class=template]) .settings--templateName").each(function() {
+      templateNames.push($(this).val());
+    });
+    
+    $(".settings--templateSelect").each(function() {
+      updateTemplateSelect($(this), templateNames);
+    });
+  }
+  
   function addTr($table, callback) {
     var $template = $table.find("> tbody > .template").clone();
+    if($table.find("> tbody > tr").not(".template").length === 0) {
+      $template.find("> td > .btn-remove").remove();
+    }
     if(typeof callback === "function") {
       callback($template);
     }
