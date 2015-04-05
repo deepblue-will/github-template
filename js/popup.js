@@ -1,4 +1,5 @@
-const GITHUB_ISSUE_URL = "https://github.com/{repo}/issues/new?labels={label}&body={body}";
+const GITHUB_REPO_URL = "https://github.com/{repo}";
+const GITHUB_ISSUE_URL = GITHUB_REPO_URL + "/issues/new?labels={label}&body={body}";
 $(function(){
   var data = DEFAULT_VALUE;
 
@@ -15,6 +16,7 @@ $(function(){
     general.forEach(function (g) {
       var $template = $(".menu--item-template").clone().removeClass("menu--item-template");
       $template.find(".menu--dispName").text(g["dispName"]);
+      $template.find(".menu--dispName").attr("href", GITHUB_REPO_URL.replace("{repo}", g["repo"]));
       $template.find(".menu--repoName").val(g["repo"]);
       Object.keys(g.templates).forEach(function (k) {
         var $option = $template.find(".menu--labelSelect option:first-child").clone();
@@ -28,6 +30,9 @@ $(function(){
     })
   }
 
+  $(document).on('click', ".menu--dispName", function () {
+    chrome.tabs.create({url: $(this).attr("href")});
+  });
 
   $(document).on('click', ".menu--btn", function () {
     var $menuItem = $(this).parents(".menu--item");
