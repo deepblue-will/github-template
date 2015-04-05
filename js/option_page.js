@@ -24,7 +24,11 @@ $(function(){
   $(document).on("click", ".btn-remove", function() {
     var $tr = $(this).parent().parent();
     var $tbody = $tr.parent();
-    $tr.remove();
+    $tr.addClass("deleting");
+    window.setTimeout(function () {
+      $tr.remove();
+    }, 800);
+
     if($tr.find(".settings--templateName")[0]) {
       updateTemplateSelectAll();
     }

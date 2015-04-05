@@ -34,3 +34,33 @@ table .btn-flat {
   padding-left: 12px;
   padding-right: 12px;
 }
+
+tr.deleting {
+  -webkit-animation: delete .8s ease;
+}
+
+.tr-added {
+  -webkit-animation: added .8s ease;
+}
+
+@-webkit-keyframes delete {
+  0% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotateX(360deg);
+  }
+}
+
+@-webkit-keyframes added {
+  0% {
+    transform: rotateX(360deg);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+}
