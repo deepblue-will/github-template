@@ -10,7 +10,7 @@
           <h2>GitHub Issue Template Option Page</h2>
         </div>
       </header>
-        
+
       <div class="container">
         <section class="section section-general">
           <h3>General</h3>
@@ -45,9 +45,11 @@
                           <input class="settings--label" type="text" name="label" value="" placeholder="label">
                         </td>
                         <td class="th-templateSelect">
-                          <select class="browser-default settings--templateSelect" name="templateSelect">
-                            <option value="" disabled>Choose Template</option>
-                          </select>
+                          <label>
+                            <select class="browser-default settings--templateSelect" name="templateSelect">
+                              <option value="" disabled>Choose Template</option>
+                            </select>
+                          </label>
                         </td>
                         <td class="td-icon">
                           <a class="btn-flat waves-effect waves-red btn-remove btn-icon">
@@ -72,7 +74,7 @@
           <table class="bordered settings settings-templates">
             <thead>
               <th>Template Name</th>
-              <th>Tempate</th>
+              <th>Template</th>
               <th class="th-delete"></th>
             </thead>
             <tbody>
@@ -81,7 +83,9 @@
                   <input class="settings--templateName" type="text" name="repo" value="" placeholder="Template Name">
                 </td>
                 <td>
-                  <textarea class="settings--template" name="template" rows="5"></textarea>
+                  <label>
+                    <textarea class="settings--template" name="template" rows="5"></textarea>
+                  </label>
                 </td>
                 <td>
                    <a class="waves-effect waves-light btn btn-floating btn-remove red"><i class="mdi-action-delete"></i></a>
@@ -91,14 +95,14 @@
           </table>
         </section>
       </div>
-      
+
       <div class="save-area">
         <div class="container">
           <a class="waves-effect waves-light btn-large btn-save"><i class="mdi-content-save left"></i>Save</a>
           <a class="waves-effect waves-light btn-large btn-reset blue-grey"><i class="mdi-content-undo left"></i>Reset</a>
         </div>
       </div>
-      
+
       <footer class="page-footer">
         <div class="footer-copyright">
           <div class="container">

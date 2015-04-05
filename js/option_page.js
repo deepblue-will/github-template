@@ -28,7 +28,7 @@ $(function(){
     if($tr.find(".settings--templateName")[0]) {
       updateTemplateSelectAll();
     }
-    $trs = $tbody.find("tr").not(".template");
+    var $trs = $tbody.find("tr").not(".template");
     if($trs.length === 1) {
       $trs.find(".btn-remove").remove();
     }
@@ -80,7 +80,7 @@ $(function(){
   });
   
   function load(data) {
-    $tableGeneral = $(".settings-genaral");
+    var $tableGeneral = $(".settings-genaral");
     updateTemplateSelect($tableGeneral.find(".template").find(".settings--templateSelect"), Object.keys(data.templates));
  
     data.general.forEach(function (g) {

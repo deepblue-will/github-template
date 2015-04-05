@@ -1,40 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="../bower_components/materialize/dist/css/materialize.min.css">
   <link rel="stylesheet" href="../css/popup.css">
   <script src="../bower_components/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/default_value.js" type="text/javascript" charset="utf-8"></script>
   <script src="../js/popup.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-  <table class="menu">
+<table class="menu bordered">
     <tr class="menu--item menu--item-template">
-      <td class="menu--repoName"></td>
+      <td>
+        <span class="menu--dispName"></span>
+        <input type="hidden" class="menu--repoName">
+      </td>
       <td class="menu--labels">
-        <select class="menu--labelSelect">
+        <select class="menu--labelSelect browser-default">
           <option value=""></option>
         </select>
       </td>
-      <td class="menu--link"><a class="menu--btn">New Issue</a></td>
-    </tr>
-    <tr class="menu--item">
-      <td class="menu--repoName">deepblue-will/github-test</td>
-      <td class="menu--labels">
-        <select class="menu--labelSelect">
-          <option value="feature">feature</option>
-          <option value="bug">bug</option>
-        </select>
-      </td>
-      <td class="menu--link"><a class="menu--btn">New Issue</a></td>
-    </tr>
-    <tr class="menu--item">
-      <td class="menu--repoName">deepblue-will/github-test2</td>
-      <td class="menu--labels">
-        <select class="menu--labelSelect">
-          <option value="feature">feature</option>
-          <option value="bug">bug</option>
-        </select>
-      </td>
-      <td class="menu--link"><a class="menu--btn">New Issue</a></td>
+      <td class="menu--link"><a class="waves-effect waves-light btn menu--btn">New Issue</a></td>
     </tr>
   </table>
 </body>
