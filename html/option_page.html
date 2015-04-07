@@ -99,7 +99,19 @@
       <div class="save-area">
         <div class="container">
           <a class="waves-effect waves-light btn-large btn-save"><i class="mdi-content-save left"></i>Save</a>
-          <a class="waves-effect waves-light btn-large btn-reset blue-grey"><i class="mdi-content-undo left"></i>Reset</a>
+          <a class="waves-effect waves-light btn-large blue-grey darken-1 modal-trigger right" href="#reset-modal"><i
+                  class="mdi-content-undo left"></i>Reset</a>
+        </div>
+        <div id="reset-modal" class="modal">
+          <div class="modal-content">
+            <h4>Reset setting</h4>
+
+            <p>The Are you sure you want to initialize the settings?</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="btn-reset modal-action modal-close waves-effect waves-green btn red">Yes</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn blue-grey darken-1">No</a>
+          </div>
         </div>
       </div>
 

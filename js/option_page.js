@@ -1,4 +1,6 @@
 $(function(){
+  $('.modal-trigger').leanModal();
+
   chrome.storage.sync.get("github-issue-template", function(storageData) {
     var data = DEFAULT_VALUE;
     if(Object.keys(storageData).length > 0){
